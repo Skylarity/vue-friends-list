@@ -68,7 +68,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 #friendsList {
-	margin: 2rem auto;
+	margin: 0 auto;
 	padding: 2rem;
 	width: 33%;
 
