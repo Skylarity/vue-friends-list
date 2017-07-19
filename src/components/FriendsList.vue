@@ -4,8 +4,7 @@
 			<icon name="search"></icon>
 			<input id="searchBar" type="text" v-model="searchTerm" @focus="searchActive = true" @blur="searchActive = false">
 		</div>
-		<!-- TODO: loop through friends here -->
-		<Friend v-for="friend in sortedFriends" v-bind:friend="friend"></Friend>
+		<Friend v-for="(friend, i) in sortedFriends" :key="i" v-bind:friend="friend"></Friend>
 	</div>
 </template>
 
@@ -29,16 +28,23 @@ export default {
 				{
 					name: {
 						first: 'Kita',
-						last: 'Schultz'
+						last: 'Michele-Schultz'
 					},
-					online: true
+					online: false
 				},
 				{
 					name: {
 						first: 'Chico',
 						last: 'Dog'
 					},
-					online: false
+					online: true
+				},
+				{
+					name: {
+						first: 'Datt',
+						last: 'Mark'
+					},
+					online: true
 				}
 			]
 		}
@@ -48,10 +54,10 @@ export default {
 			let sorted = []
 			if (this.searchTerm.length > 0) {
 				this.friends.forEach(friend => {
-						const name = friend.name.first.toLowerCase() + ' ' + friend.name.last.toLowerCase()
-						if (name.indexOf(this.searchTerm.toLowerCase()) > -1) {
-							sorted.push(friend)
-						}
+					const name = friend.name.first.toLowerCase() + ' ' + friend.name.last.toLowerCase()
+					if (name.indexOf(this.searchTerm.toLowerCase()) > -1) {
+						sorted.push(friend)
+					}
 				})
 			} else {
 				return this.friends
